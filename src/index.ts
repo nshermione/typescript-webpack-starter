@@ -1,9 +1,11 @@
 import $ = require("jquery");
 
-class EditorJS {
+class App {
     run() {
         
     }
 }
 
-window.EditorJS = new EditorJS();
+window.App = new App();
+
+

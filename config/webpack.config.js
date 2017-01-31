@@ -7,7 +7,8 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const METADATA = {
-    title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
+    title: 'Type Script Webpack Starter Kit',
+    outputFile: "app.min.js",
     baseUrl: '/',
     isDevServer: helpers.isWebpackDevServer()
 };
@@ -16,7 +17,7 @@ module.exports = {
     entry: "./src/index.ts",
     output: {
         path: "./dist",
-        filename: "editor.js"
+        filename: METADATA.outputFile
     },
     resolve: {
         // Add '.ts' and '.tsx' as a resolvable extension.

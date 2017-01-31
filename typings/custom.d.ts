@@ -3,5 +3,5 @@
  */
 
 interface Window {
-    EditorJS:any;
+    App:any;
 }
