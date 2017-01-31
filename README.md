@@ -1,2 +1,1 @@
 # editorjs
-# typescript-webpack-starter
