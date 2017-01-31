@@ -1,4 +1,4 @@
-# editorjs
+# Typescript starter kit with webpack build tool
 
 - Install libraries, run: 
 
