@@ -1,4 +1,4 @@
-# Typescript starter kit with webpack build tool
+# Typescript starter kit with webpack build tool (client)
 
 - Install libraries, run: 
 
