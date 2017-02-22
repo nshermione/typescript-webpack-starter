@@ -1,4 +1,7 @@
 /// <reference path="../typings/custom.d.ts" />
+
+import * as $ from 'jquery';
+
 class App {
     run() {
         var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create });
@@ -14,6 +17,10 @@ class App {
             game.load.image('butterfly', 'assets/butterfly.png');
 
         }
+
+        $("body").css({
+            background: "#000000"
+        });
 
         function create() {
 

@@ -48,7 +48,7 @@ module.exports = {
             template: 'src/index.html',
             chunksSortMode: 'dependency',
             metadata: METADATA,
-            inject: 'head'
+            inject: 'body'
         }),
         new webpack.optimize.CommonsChunkPlugin({
             names: ['app']
@@ -60,6 +60,7 @@ module.exports = {
             $: 'jquery',
             jQuery: 'jquery',
             p2: 'p2',
+            'window.$': 'jquery',
             PIXI: 'pixi',
             phaser: 'phaser',
             Phaser: 'phaser'
