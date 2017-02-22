@@ -6,9 +6,9 @@ const webpack = require("webpack");
 const webpackMerge = require('webpack-merge');
 const commonConfig = require("./webpack.config");
 
-
 module.exports = webpackMerge(commonConfig, {
     plugins: [
+        new webpack.NoEmitOnErrorsPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false

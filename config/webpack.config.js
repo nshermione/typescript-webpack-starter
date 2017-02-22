@@ -5,28 +5,42 @@
 const helpers = require('./helpers');
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const METADATA = {
-    title: 'Type Script Webpack Starter Kit',
-    outputFile: "app.min.js",
-    baseUrl: '/',
-    isDevServer: helpers.isWebpackDevServer()
+    title: 'App',
+    baseUrl: '/'
 };
 
 module.exports = {
-    entry: "./src/index.ts",
+    entry: {
+        app: helpers.root("src/index.ts")
+    },
     output: {
-        path: "./dist",
-        filename: METADATA.outputFile
+        path: helpers.root('dist'),
+        filename: '[name].js'
     },
     resolve: {
         // Add '.ts' and '.tsx' as a resolvable extension.
-        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"],
+        alias: {
+            'p2': helpers.root('node_modules/phaser/build/custom/p2'),
+            'pixi': helpers.root('/node_modules/phaser/build/custom/pixi.js'),
+            'phaser': helpers.root('/node_modules/phaser/build/custom/phaser-split.js')
+        }
     },
     module: {
         loaders: [
             // all files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'
-            { test: /\.ts?$/, loader: "ts-loader" }
+            {
+                test: /\.ts?$/,
+                loader: "ts-loader"
+            },
+            {
+                test: /\.(jpg|jpeg|gif|png|ico)$/,
+                exclude: /node_modules/,
+                loader: 'file-loader?name=img/[path][name].[ext]&context=./app/images'
+            }
         ]
     },
     plugins: [
@@ -35,6 +49,20 @@ module.exports = {
             chunksSortMode: 'dependency',
             metadata: METADATA,
             inject: 'head'
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            names: ['app']
+        }),
+        new CopyWebpackPlugin([
+            {from: 'src/assets', to: 'assets'}
+        ]),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            p2: 'p2',
+            PIXI: 'pixi',
+            phaser: 'phaser',
+            Phaser: 'phaser'
         })
     ]
 };

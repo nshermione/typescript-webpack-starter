@@ -6,5 +6,8 @@
   },
   "exclude": [
     "node_modules"
+  ],
+  "files": [
+    "node_modules/phaser/typescript/phaser.d.ts"
   ]
 }

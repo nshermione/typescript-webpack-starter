@@ -9,6 +9,8 @@ const commonConfig = require("./webpack.config");
 
 
 module.exports = webpackMerge(commonConfig, {
+    devtool: "cheap-eval-source-map",
+
     devServer: {
         contentBase: path.join(__dirname, "dist"),
         compress: true,
