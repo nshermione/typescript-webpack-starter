@@ -1,3 +1,19 @@
-/**
- * Created by thinhtran on 3/9/17.
- */
+import * as Phaser from 'phaser';
+
+export class PlayScreen extends Phaser.State {
+    preload() {
+
+    }
+
+    create() {
+
+    }
+
+    update() {
+
+    }
+
+    render() {
+
+    }
+}
