@@ -1,6 +1,5 @@
-/// <reference path="../typings/custom.d.ts" />
-
 import * as $ from 'jquery';
+import * as Phaser from 'phaser';
 
 class App {
     run() {
