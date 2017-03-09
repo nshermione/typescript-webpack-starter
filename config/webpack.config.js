@@ -15,7 +15,7 @@ const METADATA = {
 
 module.exports = {
     entry: {
-        app: helpers.root("src/app.ts")
+        app: helpers.root("src/main.ts")
     },
     output: {
         path: helpers.root('dist'),
