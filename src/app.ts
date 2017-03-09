@@ -1,5 +1,6 @@
 import * as $ from 'jquery';
 import * as Phaser from 'phaser';
+import './scss/app.scss';
 
 class App {
     run() {
@@ -16,10 +17,6 @@ class App {
             game.load.image('butterfly', 'assets/butterfly.png');
 
         }
-
-        $("body").css({
-            background: "#000000"
-        });
 
         function create() {
 

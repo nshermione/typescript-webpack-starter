@@ -6,6 +6,7 @@ const helpers = require('./helpers');
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const METADATA = {
     title: 'App',
@@ -14,7 +15,7 @@ const METADATA = {
 
 module.exports = {
     entry: {
-        app: helpers.root("src/index.ts")
+        app: helpers.root("src/app.ts")
     },
     output: {
         path: helpers.root('dist'),
@@ -40,6 +41,18 @@ module.exports = {
                 test: /\.(jpg|jpeg|gif|png|ico)$/,
                 exclude: /node_modules/,
                 loader: 'file-loader?name=img/[path][name].[ext]&context=./app/images'
+            },
+            {
+                test: /\.(sass|scss)$/,
+                loader: ExtractTextPlugin.extract({
+                    use: [{
+                        loader: "css-loader"
+                    }, {
+                        loader: "sass-loader"
+                    }],
+                    // use style-loader in development
+                    fallback: "style-loader"
+                })
             }
         ]
     },

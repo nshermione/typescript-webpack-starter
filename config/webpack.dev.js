@@ -6,11 +6,13 @@ const path = require("path");
 const webpack = require("webpack");
 const webpackMerge = require('webpack-merge');
 const commonConfig = require("./webpack.config");
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = webpackMerge(commonConfig, {
     devtool: "cheap-eval-source-map",
-
+    plugins: [
+        new ExtractTextPlugin('[name].css')
+    ],
     devServer: {
         contentBase: path.join(__dirname, "dist"),
         compress: true,
