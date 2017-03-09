@@ -9,13 +9,19 @@ const commonConfig = require("./webpack.config");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = webpackMerge(commonConfig, {
-    devtool: "cheap-eval-source-map",
+    devtool: 'cheap-module-eval-source-map',
+
     plugins: [
         new ExtractTextPlugin('[name].css')
     ],
     devServer: {
-        contentBase: path.join(__dirname, "dist"),
-        compress: true,
-        port: 9000
+        host: "localhost",
+        port: 9000,
+        historyApiFallback: true,
+        stats: 'minimal',
+        watchOptions: {
+            aggregateTimeout: 300,
+            poll: 1000
+        }
     }
 });

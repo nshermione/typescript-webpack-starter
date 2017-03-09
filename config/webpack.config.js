@@ -23,7 +23,7 @@ module.exports = {
     },
     resolve: {
         // Add '.ts' and '.tsx' as a resolvable extension.
-        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"],
+        extensions: [".ts", ".js"],
         alias: {
             'p2': helpers.root('node_modules/phaser/build/custom/p2'),
             'pixi': helpers.root('/node_modules/phaser/build/custom/pixi.js'),
@@ -35,7 +35,7 @@ module.exports = {
             // all files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'
             {
                 test: /\.ts?$/,
-                loader: "ts-loader"
+                loader: "awesome-typescript-loader"
             },
             {
                 test: /\.(jpg|jpeg|gif|png|ico)$/,
