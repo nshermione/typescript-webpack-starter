@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf dist && webpack --config ./config/webpack.prod.js",
-    "dev": "webpack-dev-server --open --progress --colors --config config/webpack.dev.js"
+    "build": "rimraf dist && webpack  --config ./config/webpack.prod.js",
+    "dev": "webpack-dev-server --open --colors --config config/webpack.dev.js"
   },
   "author": "thinhtran",
   "license": "ISC",

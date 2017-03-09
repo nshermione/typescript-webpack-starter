@@ -15,11 +15,13 @@ const METADATA = {
 
 module.exports = {
     entry: {
+        vendors: helpers.root("src/vendors.ts"),
         app: helpers.root("src/main.ts")
     },
     output: {
         path: helpers.root('dist'),
-        filename: '[name].js'
+        filename: '[name].[hash].js',
+        chunkFilename: '[name].[chunkhash].js'
     },
     resolve: {
         // Add '.ts' and '.tsx' as a resolvable extension.
@@ -64,7 +66,7 @@ module.exports = {
             inject: 'body'
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            names: ['app']
+            names: ['app', 'vendors']
         }),
         new CopyWebpackPlugin([
             {from: 'src/assets', to: 'assets'}
