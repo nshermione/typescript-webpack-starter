@@ -1,4 +1,6 @@
 import * as $ from 'jquery';
+import {config} from "../../config";
+import * as MobileDetect from 'mobile-detect';
 
 export class Scaler {
     ratio = 1;
@@ -14,8 +16,14 @@ export class Scaler {
     }
 
     private resize() {
-        let screenWidth = $(window).width();
-        let screenHeight = $(window).height();
+        let md = new MobileDetect(window.navigator.userAgent);
+
+        let screenWidth = config.screenSize.w;
+        let screenHeight = config.screenSize.h;
+        if (md.mobile()) {
+            screenWidth = $(window).width();
+            screenHeight = $(window).height();
+        }
         let screenRatio = screenWidth / screenHeight;
 
         let scale = 1;
